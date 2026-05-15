@@ -83,8 +83,6 @@ export function CustomCursor() {
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
         ctx.lineWidth = 3;
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = "rgba(99, 102, 241, 0.6)";
 
         for (let i = 1; i < points.length; i++) {
           ctx.beginPath();

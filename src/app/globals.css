@@ -131,9 +131,13 @@
 @layer utilities {
   .glass {
     @apply bg-white/5 border border-white/10 backdrop-blur-md;
+    -webkit-backdrop-filter: blur(12px);
+    transform: translateZ(0);
   }
   .glass-card {
     @apply bg-white/5 border border-white/10 backdrop-blur-xl shadow-xl shadow-black/40;
+    -webkit-backdrop-filter: blur(24px);
+    transform: translateZ(0);
   }
   .text-glow {
     text-shadow: 0 0 20px theme('colors.indigo.500/50');
