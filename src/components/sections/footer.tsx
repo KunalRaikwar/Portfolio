@@ -47,7 +47,7 @@ export function Footer() {
             <div className="flex flex-col gap-3">
               <h4 className="text-white font-medium mb-2">Socials</h4>
               <a href="https://github.com/KunalRaikwar" target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-indigo-400 text-sm transition-colors">GitHub</a>
-              <a href="https://www.linkedin.com/in/kunal-raikwar-2813362a9/" target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-indigo-400 text-sm transition-colors">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/kunal-raikwar-2813362a9" target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-indigo-400 text-sm transition-colors">LinkedIn</a>
               <a href="mailto:kunalraikwar793@gmail.com" className="text-zinc-500 hover:text-indigo-400 text-sm transition-colors">Email</a>
             </div>
           </div>

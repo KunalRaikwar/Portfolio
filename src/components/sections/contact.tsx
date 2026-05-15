@@ -63,7 +63,7 @@ export function Contact() {
 
             <motion.div variants={staggerItem}>
               <a 
-                href="https://www.linkedin.com/in/kunal-raikwar-2813362a9/"
+                href="https://www.linkedin.com/in/kunal-raikwar-2813362a9"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-4 p-6 rounded-2xl glass hover:border-blue-500/30 transition-all group"
