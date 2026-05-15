@@ -55,7 +55,7 @@ export function CustomCursor() {
     if (!ctx) return;
 
     let points: { x: number; y: number; age: number }[] = [];
-    let animationFrameId: number;
+    let animationFrameId: number | null = null;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -67,6 +67,9 @@ export function CustomCursor() {
 
     const handleMouseMove = (e: MouseEvent) => {
       points.push({ x: e.clientX, y: e.clientY, age: 0 });
+      if (!animationFrameId) {
+        render();
+      }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -96,15 +99,18 @@ export function CustomCursor() {
         }
       }
 
-      animationFrameId = requestAnimationFrame(render);
+      if (points.length > 0) {
+        animationFrameId = requestAnimationFrame(render);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        animationFrameId = null;
+      }
     };
-
-    render();
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
@@ -118,7 +124,13 @@ export function CustomCursor() {
       <canvas 
         ref={canvasRef}
         className="fixed inset-0 pointer-events-none z-[98]"
-        style={{ opacity: isVisible ? 1 : 0, transition: "opacity 0.3s" }}
+        style={{ 
+          opacity: isVisible ? 1 : 0, 
+          transition: "opacity 0.3s",
+          willChange: "transform, opacity",
+          transform: "translateZ(0)",
+          WebkitTransform: "translateZ(0)"
+        }}
       />
     </>
   );

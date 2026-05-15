@@ -96,6 +96,11 @@ export function Particles() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 z-0 pointer-events-none opacity-50"
+      style={{
+        willChange: "transform",
+        transform: "translateZ(0)",
+        WebkitTransform: "translateZ(0)"
+      }}
     />
   );
 }
