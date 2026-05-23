@@ -126,6 +126,13 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tight;
   }
+
+  /* Hide default cursor on desktop devices to enable custom cursor */
+  @media (pointer: fine) {
+    html, body, a, button, input, textarea, select, [role="button"] {
+      cursor: none !important;
+    }
+  }
 }
 
 @layer utilities {
