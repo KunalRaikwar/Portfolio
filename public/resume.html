@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kunal Raikwar - Resume</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #222;
+    font-size: 11pt;
+    line-height: 1.45;
+    background: #fff;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 18mm 20mm 15mm 20mm;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-size: 24pt;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    color: #111;
+    margin-bottom: 4px;
+  }
+
+  .header .contact-line {
+    font-size: 9.5pt;
+    color: #333;
+  }
+
+  .header .links-line {
+    font-size: 9.5pt;
+  }
+
+  .header a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  .header a:hover {
+    text-decoration: underline;
+  }
+
+  /* Section */
+  .section {
+    margin-top: 14px;
+  }
+
+  .section-title {
+    font-size: 12.5pt;
+    font-weight: 700;
+    color: #0074b7;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1.8px solid #0074b7;
+    padding-bottom: 3px;
+    margin-bottom: 8px;
+  }
+
+  /* Summary */
+  .summary {
+    text-align: justify;
+    font-size: 10.5pt;
+    color: #333;
+    line-height: 1.55;
+  }
+
+  /* Skills Table */
+  .skills-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5pt;
+  }
+
+  .skills-table td {
+    padding: 3px 0;
+    vertical-align: top;
+  }
+
+  .skills-table td:first-child {
+    font-weight: 700;
+    width: 110px;
+    color: #222;
+    padding-right: 15px;
+  }
+
+  .skills-table td:last-child {
+    color: #333;
+  }
+
+  /* Projects */
+  .project-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
+    margin-top: 10px;
+  }
+
+  .project-header:first-child {
+    margin-top: 0;
+  }
+
+  .project-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #222;
+  }
+
+  .project-link {
+    font-size: 9pt;
+    color: #fff;
+    background: #0074b7;
+    padding: 1px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Bullet list */
+  .bullet-list {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .bullet-list li {
+    font-size: 10.5pt;
+    color: #333;
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 3px;
+    line-height: 1.5;
+  }
+
+  .bullet-list li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #222;
+    font-weight: bold;
+  }
+
+  /* Education */
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .edu-degree {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #222;
+  }
+
+  .edu-year {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #222;
+  }
+
+  .edu-college {
+    font-size: 10.5pt;
+    color: #555;
+    margin-top: 1px;
+  }
+
+  /* Certifications */
+  .cert-list {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .cert-list li {
+    font-size: 10.5pt;
+    color: #333;
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 3px;
+    line-height: 1.5;
+  }
+
+  .cert-list li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #222;
+    font-weight: bold;
+  }
+
+  .cert-list li strong {
+    color: #222;
+  }
+
+  @media print {
+    body { margin: 0; }
+    .page {
+      padding: 15mm 18mm 12mm 18mm;
+      min-height: auto;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- Header -->
+  <div class="header">
+    <h1>KUNAL RAIKWAR</h1>
+    <div class="contact-line">Indore, Madhya Pradesh | +91 9424334734 | <a href="mailto:kunalraikwar793@gmail.com">kunalraikwar793@gmail.com</a></div>
+    <div class="links-line">
+      <a href="https://linkedin.com/in/kunal-raikwar-2813362a9">linkedin.com/in/kunal-raikwar-2813362a9</a> | 
+      <a href="https://github.com/KunalRaikwar">github.com/KunalRaikwar</a>
+    </div>
+  </div>
+
+  <!-- Professional Summary -->
+  <div class="section">
+    <div class="section-title">Professional Summary</div>
+    <p class="summary">
+      Full Stack Developer and Computer Science student with hands-on experience in building responsive web applications using the MERN stack. Proficient in JavaScript, C++, Python, and SQL, with a strong focus on writing clean code and solving complex technical problems. Eager to contribute technical expertise to a collaborative team while continuously improving full-stack capabilities.
+    </p>
+  </div>
+
+  <!-- Technical Skills -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <table class="skills-table">
+      <tr><td>Languages:</td><td>JavaScript (ES6+), C++, Python, SQL</td></tr>
+      <tr><td>Frontend:</td><td>React.js, HTML5, CSS3, DOM Manipulation, Responsive Design</td></tr>
+      <tr><td>Backend:</td><td>Node.js, Express.js, RESTful APIs</td></tr>
+      <tr><td>Databases:</td><td>MongoDB, MySQL, PostgreSQL</td></tr>
+      <tr><td>Tools:</td><td>Git, GitHub, VS Code, Vercel, MS Excel (VLOOKUP, Pivot Tables)</td></tr>
+    </table>
+  </div>
+
+  <!-- Projects -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="project-header">
+      <span class="project-title">GeniusCV – AI Resume Builder</span>
+      <a href="https://genius-cv-pi.vercel.app" class="project-link">Live Link</a>
+    </div>
+    <ul class="bullet-list">
+      <li>Developed a full-stack resume builder using the MERN stack, enabling users to generate professional resumes without mandatory registration.</li>
+      <li>Implemented a live preview feature using React.js to provide real-time visual feedback during the editing process.</li>
+      <li>Optimized PDF generation logic and implemented responsive design principles for seamless mobile accessibility.</li>
+      <li>Managed version control via Git and successfully deployed the application on Vercel.</li>
+    </ul>
+
+    <div class="project-header">
+      <span class="project-title">College Event Management System</span>
+      <a href="https://college-event-management-system-eight.vercel.app" class="project-link">Live Link</a>
+    </div>
+    <ul class="bullet-list">
+      <li>Architected a centralized platform to manage and showcase college workshops, hackathons, and cultural events.</li>
+      <li>Developed secure registration flows and dynamic interface components using Node.js and backend business logic.</li>
+      <li>Designed mobile-friendly layouts utilizing CSS Flexbox and Grid to ensure optimal usability across various devices.</li>
+      <li>Managed the full software development lifecycle (SDLC), from initial UI/UX design to final public deployment.</li>
+    </ul>
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-row">
+      <span class="edu-degree">Bachelor of Technology in Computer Science & Engineering</span>
+      <span class="edu-year">2023 – 2027</span>
+    </div>
+    <div class="edu-college">Chameli Devi Group of Institutions, Indore</div>
+  </div>
+
+  <!-- Certifications & Achievements -->
+  <div class="section">
+    <div class="section-title">Certifications & Achievements</div>
+    <ul class="cert-list">
+      <li><strong>AWS Academy Graduate:</strong> Cloud Foundations Certification.</li>
+      <li><strong>SQL Fundamentals:</strong> Comprehensive training in relational database management and schema design.</li>
+      <li><strong>Microsoft Excel:</strong> Advanced certification focused on data management and analytical tools.</li>
+      <li><strong>Public Speaking:</strong> Active participant in technical debate forums and professional communication exercises.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

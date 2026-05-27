@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -15,26 +15,45 @@ const navLinks = [
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    let ticking = false;
 
-      // Scroll spy logic
-      const sections = navLinks.map((link) => link.href.substring(1));
-      let current = "";
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element && window.scrollY >= element.offsetTop - 200) {
-          current = section;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        setIsScrolled(currentScrollY > 50);
+
+        // Hide on scroll down, show on scroll up
+        if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+          setIsHidden(true);
+        } else {
+          setIsHidden(false);
         }
-      }
-      setActiveSection(current);
+        lastScrollY.current = currentScrollY;
+
+        // Scroll spy logic
+        const sections = navLinks.map((link) => link.href.substring(1));
+        let current = "";
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element && currentScrollY >= element.offsetTop - 200) {
+            current = section;
+          }
+        }
+        setActiveSection(current);
+        ticking = false;
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -51,13 +70,11 @@ export function Navbar() {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+    <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out border-b border-transparent",
-        isScrolled ? "glass py-4 border-white/10" : "bg-transparent py-6"
+        isScrolled ? "glass py-4 border-white/10" : "bg-transparent py-6",
+        isHidden ? "-translate-y-full" : "translate-y-0"
       )}
     >
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center max-w-7xl">
@@ -145,6 +162,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }

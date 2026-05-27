@@ -74,29 +74,36 @@ export function ProjectCard({
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onClick={() => link && link !== "#" && window.open(link, "_blank")}
-      className={`glass-card rounded-2xl p-8 relative group transition-colors duration-500 border bg-gradient-to-br ${accentColors[accentColor]} ${link && link !== "#" ? "cursor-pointer" : ""}`}
+      onClick={(e) => {
+        // Only navigate if the click target is NOT inside an anchor tag
+        const target = e.target as HTMLElement;
+        if (target.closest("a")) return;
+        if (link && link !== "#") window.open(link, "_blank");
+      }}
+      className={`glass-card rounded-2xl p-8 relative group transition-colors duration-500 border bg-gradient-to-br h-full ${accentColors[accentColor]} ${link && link !== "#" ? "cursor-pointer" : ""}`}
     >
       <div 
         className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none" 
         style={{ transform: "translateZ(20px)" }}
       />
+
+      {/* Icon links — placed outside the 3D-transformed div for reliable click handling */}
+      <div className="absolute top-8 right-8 flex gap-3 z-30">
+        {github && github !== "#" && (
+          <a href={github} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white transition-colors p-1">
+            <GithubIcon className="w-5 h-5" />
+          </a>
+        )}
+        {link && link !== "#" && (
+          <a href={link} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-white transition-colors p-1">
+            <ExternalLink className="w-5 h-5" />
+          </a>
+        )}
+      </div>
       
-      <div className="relative z-10" style={{ transform: "translateZ(40px)" }}>
+      <div className="relative z-10 flex flex-col h-full" style={{ transform: "translateZ(40px)" }}>
         <div className="flex justify-between items-start mb-6">
-          <h3 className="text-2xl font-bold text-white tracking-tight">{title}</h3>
-          <div className="flex gap-3 relative z-20">
-            {github && (
-              <a href={github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="text-zinc-400 hover:text-white transition-colors">
-                <GithubIcon className="w-5 h-5" />
-              </a>
-            )}
-            {link && (
-              <a href={link} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="text-zinc-400 hover:text-white transition-colors">
-                <ExternalLink className="w-5 h-5" />
-              </a>
-            )}
-          </div>
+          <h3 className="text-2xl font-bold text-white tracking-tight pr-20">{title}</h3>
         </div>
 
         <p className="text-zinc-400 mb-6 leading-relaxed">

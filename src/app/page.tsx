@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/navbar";
-import { PageLoader } from "@/components/page-loader";
+
 import { CustomCursor } from "@/components/cursor";
 import { Particles } from "@/components/particles";
 
@@ -15,7 +15,7 @@ import { Footer } from "@/components/sections/footer";
 export default function Home() {
   return (
     <>
-      <PageLoader />
+
       <CustomCursor />
       <Particles />
       <Navbar />

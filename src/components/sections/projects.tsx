@@ -28,7 +28,7 @@ const projects = [
       "Comprehensive backend management"
     ],
     techStack: ["MongoDB", "Express.js", "React.js", "Node.js"],
-    accentColor: "purple" as const,
+    accentColor: "indigo" as const,
     github: "#",
     link: "https://college-event-management-system-eight.vercel.app"
   }

@@ -34,9 +34,8 @@ export function Particles() {
         this.x = Math.random() * (canvas?.width || 0);
         this.y = Math.random() * (canvas?.height || 0);
         this.size = Math.random() * 2 + 0.1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-        // Purplish/blueish colors for particles
+        this.speedX = Math.random() * 0.4 - 0.2;
+        this.speedY = Math.random() * 0.4 - 0.2;
         const colors = ["#6366f1", "#8b5cf6", "#3b82f6", "#ffffff"];
         this.color = colors[Math.floor(Math.random() * colors.length)];
         this.opacity = Math.random() * 0.5 + 0.1;
@@ -65,26 +64,35 @@ export function Particles() {
 
     const init = () => {
       particlesArray = [];
-      const numberOfParticles = Math.min((canvas.width * canvas.height) / 15000, 100);
+      // Reduce particle count significantly for performance
+      const numberOfParticles = Math.min(Math.floor((canvas.width * canvas.height) / 25000), 60);
       for (let i = 0; i < numberOfParticles; i++) {
         particlesArray.push(new Particle());
       }
     };
 
-    const animate = () => {
+    // Throttle to ~30fps instead of 60fps — particles are subtle, no need for 60fps
+    let lastTime = 0;
+    const interval = 1000 / 30;
+
+    const animate = (time: number) => {
+      animationFrameId = requestAnimationFrame(animate);
+      const delta = time - lastTime;
+      if (delta < interval) return;
+      lastTime = time - (delta % interval);
+
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       for (let i = 0; i < particlesArray.length; i++) {
         particlesArray[i].update();
         particlesArray[i].draw();
       }
-      animationFrameId = requestAnimationFrame(animate);
     };
 
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
-    animate();
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
